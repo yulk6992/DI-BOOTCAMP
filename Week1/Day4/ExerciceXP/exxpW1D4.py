@@ -47,52 +47,13 @@ sara_pets = Pets(all_cats)
 
 sara_pets.walk()
 
-
-# #### Exercice 2 : Dogs
-
-# Step 1: create the dog class
-
-class Dog: 
-    def __init__(self, name, age, weight):
-        self.name = name
-        self.age = age
-        self.weight = weight
-    def bark(self): 
-        return f"{self.name} is barking"
-    def run_speed(self): 
-        return self.weight / self.age *10
-    def fight(self, other_dog):
-        self_power = self.run_speed() * self.weight
-        other_power = other_dog.run_speed() * other_dog.weight
-        if self_power > other_power:
-            return f"{self.name} won the fight against {other_dog.name}!"
-        elif self_power < other_power:
-            return f"{other_dog.name} won the fight against {self.name}!"
-        else: 
-            return f"it's a draw between {self.name} and {other_dog.name}!"
-    
-# step 2: create dogs instance
-
-dog1 = Dog("Atila", 5, 35)
-dog2 = Dog("Max", 3, 26)
-dog3 = Dog("Tayou", 8, 40)
-
-# Step 3: test Dogs methods
-
-print(dog1.bark())
-print(dog2.run_speed())
-print(dog1.fight(dog2))
-
-# note that Exercice 2 is saved as dog_class.py
+# note that Exercice 2 is saved as exxpW1D4_Dog_class.py
 
 # ##### Exercice 3: Dogs Domesticated
 
 # Step 1: Import the dog Class
 
-# from dog_class.py import Dog
-# line 92: put as a comment as the previous exercice has not been saved in a new file
-
-import random
+from exxpW1D4_Dog_class import Dog
 
 # Step 2: Create the pet Dog Class
 
@@ -118,6 +79,8 @@ class Dog:
             return f"it's a draw between {self.name} and {other_dog.name}!"
     
 # Pet Dog class that inherits from the dog Class
+
+import random
 
 class PetDog(Dog):
     def __init__(self, name, age, weight):
@@ -159,6 +122,7 @@ class Person:
             return True
         else:
             return False
+
 # Step 2: Create the family class
 
 class Family:
