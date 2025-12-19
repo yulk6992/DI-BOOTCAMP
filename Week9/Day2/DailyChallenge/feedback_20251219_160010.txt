@@ -1,0 +1,11 @@
+URL: https://github.com/yulk6992/DI-BOOTCAMP/blob/main/Week9/Day2/DailyChallenge/app.py
+suggestions for improvement:
+- No specific feedback.
+Correctness: 100%
+-----
+URL: https://github.com/yulk6992/DI-BOOTCAMP/blob/main/Week9/Day2/DailyChallenge/requirements.txt
+suggestions for improvement:
+- This submission only contains a `requirements.txt` file, which lists the Python packages needed for the project. It does not include any code related to building the agentic RAG application or Streamlit app as described in the prompt.
+- The absence of `app.py` and `agentic_rag.ipynb` means the code does not address the core requirements of the problem, making it impossible to evaluate its functionality or adherence to the specifications.
+Correctness: 0%
+-----
