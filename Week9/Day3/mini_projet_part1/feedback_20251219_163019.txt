@@ -1,0 +1,35 @@
+URL: https://github.com/yulk6992/DI-BOOTCAMP/blob/main/Week9/Day3/mini_projet_part1/app.py
+suggestions for improvement:
+- The code assumes the existence of `MCPConnection` and `orchestrate` functions, which are not defined in the provided snippet.  These need to be included for a complete evaluation.
+- The `web_cmd`, `files_cmd`, and `insights_cmd` are hardcoded to `python server.py`. It should be possible to start different MCP servers by using different commands.
+- The code lacks specific error handling within the orchestration loop, such as handling exceptions raised by tool calls or LLM responses. This is a functional requirement.
+- Logging should include timestamps and potentially more detailed error information for debugging.
+Correctness: 70%
+-----
+URL: https://github.com/yulk6992/DI-BOOTCAMP/blob/main/Week9/Day3/mini_projet_part1/mcp_client.py
+suggestions for improvement:
+- This code provides a basic MCP client, but it doesn't fulfill the primary requirement of the mini-project: building an end-to-end agentic application that integrates at least two third-party MCP servers and uses an LLM to orchestrate tool calls. The provided code only defines a class for interacting with a single MCP server.
+- The provided code doesn't include any logic for LLM-based planning, error handling, observability, or configuration as specified in the requirements.
+- The code also lacks the integration with Streamlit.
+Correctness: 0%
+-----
+URL: https://github.com/yulk6992/DI-BOOTCAMP/blob/main/Week9/Day3/mini_projet_part1/orchestrator.py
+suggestions for improvement:
+- Consider adding more robust error handling for network requests, including retry mechanisms with exponential backoff.
+- Implement input validation and sanitization to prevent potential injection vulnerabilities when constructing prompts and tool arguments.
+- While summarization is done for result, consider adding summarization to user prompt and tool description if they become too lengthy, to respect context window limits.
+Correctness: 90%
+-----
+URL: https://github.com/yulk6992/DI-BOOTCAMP/blob/main/Week9/Day3/mini_projet_part1/requirements.txt
+suggestions for improvement:
+- Skipping file (too many comments or blank lines).
+Correctness: N/A%
+-----
+URL: https://github.com/yulk6992/DI-BOOTCAMP/blob/main/Week9/Day3/mini_projet_part1/server.py
+suggestions for improvement:
+- The code implements a basic MCP server, but it doesn't fulfill the core requirement of integrating two *third-party* MCP servers. It only defines a single tool ('summarize_insights').
+- The task explicitly requires the LLM to *plan and orchestrate* tool calls, which isn't implemented in this code. The code only defines the server-side part.
+- There is no mention of GroqCloud or Ollama integration, nor is there any client-side code to interact with this server or other third-party servers.
+- The code lacks error handling for timeouts or bad inputs as requested.
+Correctness: 20%
+-----
