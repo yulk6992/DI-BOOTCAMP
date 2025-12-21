@@ -1,0 +1,134 @@
+URL: https://github.com/yulk6992/DI-BOOTCAMP/blob/main/Week9/Day3/mini_projet/.env
+suggestions for improvement:
+- The provided code snippet is just configuration, not functional code. It does not actually perform any of the required tasks, such as integrating MCP servers, running them, or using an LLM for orchestration.
+- The submission should include runnable code that demonstrates the integration of multiple MCP servers, LLM planning, and the other functional requirements. The description mentions other files containing the core logic, but those are not provided for review.
+Correctness: 0.0%
+-----
+URL: https://github.com/yulk6992/DI-BOOTCAMP/blob/main/Week9/Day3/mini_projet/app.py
+suggestions for improvement:
+- No specific feedback.
+Correctness: 100%
+-----
+URL: https://github.com/yulk6992/DI-BOOTCAMP/blob/main/Week9/Day3/mini_projet/config.py
+suggestions for improvement:
+- No specific feedback.
+Correctness: 100%
+-----
+URL: https://github.com/yulk6992/DI-BOOTCAMP/blob/main/Week9/Day3/mini_projet/llm_client.py
+suggestions for improvement:
+- The provided code focuses on the LLM client, but the task is about integrating multiple MCP servers. The code does not explicitly demonstrate how to connect to and use third-party MCP servers as requested in the prompt. It only shows how to interact with an LLM (either GroqCloud or Ollama).
+- The code lacks the core element of demonstrating the integration of at least two third-party MCP servers alongside your own server in a cohesive flow, which is a central requirement. The 'Smart Data Scout', 'Dev Assistant', or 'Research Notebook' example project ideas were meant to inspire such an integration.
+- The code provides good validation and error handling for the LLM interaction, but it lacks specific error handling related to potential failures when interacting with MCP servers (e.g., server not available, invalid tool call).
+- The configuration loading is abstracted to 'config.py', which is good but not provided in the code. Assuming it's correctly implemented, it addresses the 'Config: env-based setup' requirement.
+Correctness: 70%
+-----
+URL: https://github.com/yulk6992/DI-BOOTCAMP/blob/main/Week9/Day3/mini_projet/mcp_multi_client.py
+suggestions for improvement:
+- No specific feedback.
+Correctness: 100%
+-----
+URL: https://github.com/yulk6992/DI-BOOTCAMP/blob/main/Week9/Day3/mini_projet/mini_projet_part1/app.py
+suggestions for improvement:
+- The code assumes the existence of `mcp_client.MCPConnection` and `orchestrator.orchestrate`, which are not provided, hindering a full assessment. These need to be defined to fully evaluate the submission's correctness.
+- The MCP server commands are hardcoded as `python server.py`.  This is a major assumption and likely to be incorrect for third-party servers, which require specific startup procedures as per their documentation on the linked GitHub repository.  The commands should be dynamic and configurable.
+- The example `user_goal` is helpful, but more diverse examples would be beneficial.
+- Consider adding error handling around the `MCPConnection` initialization to gracefully handle cases where a server fails to start or connect.
+- Add input validation for environment variables to ensure they are not empty.
+Correctness: 70%
+-----
+URL: https://github.com/yulk6992/DI-BOOTCAMP/blob/main/Week9/Day3/mini_projet/mini_projet_part1/mcp_client.py
+suggestions for improvement:
+- The code provides a good starting point for interacting with MCP servers, but it only implements the client-side connection logic.  It needs to be expanded to include the orchestration, planning, error handling, and configuration aspects as outlined in the mini-project description.
+- Consider adding logging for tool calls and responses to enhance observability.
+- Implement a mechanism for setting server endpoints via environment variables.
+- Add basic error handling for subprocess execution and JSON parsing.
+Correctness: 0%
+-----
+URL: https://github.com/yulk6992/DI-BOOTCAMP/blob/main/Week9/Day3/mini_projet/mini_projet_part1/orchestrator.py
+suggestions for improvement:
+- Consider adding more robust error handling within the `call_ollama` function, potentially retrying the request or implementing a fallback mechanism if Ollama is unavailable.
+- Implement input validation for the `arguments` dictionary passed to `conn.call_tool` to prevent potential issues with the MCP servers.
+- Enhance security by avoiding printing the entire result in the summary. Instead, consider logging only specific fields or a hashed version of sensitive data.
+- The current logging only summarizes the output. Consider more detailed logging for debugging purposes, while still being mindful of security.
+Correctness: 90%
+-----
+URL: https://github.com/yulk6992/DI-BOOTCAMP/blob/main/Week9/Day3/mini_projet/mini_projet_part1/requirements.txt
+suggestions for improvement:
+- Skipping file (too many comments or blank lines).
+Correctness: N/A%
+-----
+URL: https://github.com/yulk6992/DI-BOOTCAMP/blob/main/Week9/Day3/mini_projet/mini_projet_part1/server.py
+suggestions for improvement:
+- The code only implements the server side with a single tool, `summarize_insights`. It needs to be extended to create an end-to-end application by:
+- 1. Integrating at least two third-party MCP servers from the provided GitHub repository.
+- 2. Running those servers locally and connecting to them from an MCP client (needs to be implemented).
+- 3. Using an LLM (GroqCloud or Ollama) to plan and orchestrate tool calls (needs to be implemented in the client).
+- 4. Implementing error handling, observability, and configuration as specified in the requirements.
+- 5. Integrating with Streamlit to build UI components.
+Correctness: 20%
+-----
+URL: https://github.com/yulk6992/DI-BOOTCAMP/blob/main/Week9/Day3/mini_projet/my_mcp_server.py
+suggestions for improvement:
+- No specific feedback.
+Correctness: 100%
+-----
+URL: https://github.com/yulk6992/DI-BOOTCAMP/blob/main/Week9/Day3/mini_projet/orchestrator.py
+suggestions for improvement:
+- Consider adding more comments to explain complex logic, especially within the error handling and tool execution sections.
+- Add documentation for each function. Use docstrings to clarify the purpose, arguments, and return values of each function to enhance understandability and maintainability.
+- The code includes rate limiting which is good, consider making the rate limit configurable via environment variables to give more flexibility.
+Correctness: 95%
+-----
+URL: https://github.com/yulk6992/DI-BOOTCAMP/blob/main/Week9/Day3/mini_projet/requirements.txt
+suggestions for improvement:
+- Skipping file (too many comments or blank lines).
+Correctness: N/A%
+-----
+URL: https://github.com/yulk6992/DI-BOOTCAMP/blob/main/Week9/Day3/mini_projet/test_mcp.py
+suggestions for improvement:
+- The code demonstrates integration of multiple MCP servers and tool orchestration but it lacks the LLM planning component, which is a key requirement.
+- Error handling is missing. The code does not handle potential timeouts or invalid input errors from the MCP servers.
+- Observability could be improved. While it prints the results of each tool call, more detailed logging of inputs, outputs, and timestamps would be beneficial for debugging and monitoring.
+- The hardcoded paths like `/home/yacine/mcp_root` should be configurable or dynamically generated to improve reproducibility and avoid dependency on a specific user's environment.
+Correctness: 70%
+-----
+URL: https://github.com/yulk6992/DI-BOOTCAMP/blob/main/Week9/Day3/mini_projet_part1/app.py
+suggestions for improvement:
+- The code assumes the existence of `mcp_client.MCPConnection` and `orchestrator.orchestrate`, which are not provided, making it difficult to assess the correctness fully. Provide these to enable full evaluation.
+- The code assumes that each server's script is `server.py`, which might not be the case for all third-party MCP servers. The commands to start the servers should be configurable and reflect the actual startup scripts for each server.
+- Error handling could be improved within the `orchestrate` function to provide more informative feedback to the user in case of issues with tool calls. Implement error feedback mechanisms within the orchestrator logic.
+- The code lacks explicit configuration for the LLM backend (GroqCloud or Ollama) as environment variables, as specified in the requirements. Add environment variable configurations for selecting and configuring the LLM backend.
+Correctness: 70%
+-----
+URL: https://github.com/yulk6992/DI-BOOTCAMP/blob/main/Week9/Day3/mini_projet_part1/mcp_client.py
+suggestions for improvement:
+- This code only provides a basic MCP client, but it does not actually address the core requirements of the mini-project which include integrating multiple third-party MCP servers, using an LLM for planning and orchestration, implementing error handling, observability, configuration and reproducibility. The given class is a starting point but needs significant expansion.
+- Implement the LLM-driven orchestration logic to plan and execute tool calls to achieve a user goal.
+- Add error handling for timeouts and bad inputs, including retries and fallback mechanisms.
+- Implement logging for each tool call to track inputs, outputs, and errors.
+- Create a configuration system using environment variables to manage LLM backend settings and server endpoints.
+- Provide instructions or a script for easy startup on a clean machine to ensure reproducibility.
+Correctness: 0%
+-----
+URL: https://github.com/yulk6992/DI-BOOTCAMP/blob/main/Week9/Day3/mini_projet_part1/orchestrator.py
+suggestions for improvement:
+- Consider adding more robust error handling, particularly around network issues or malformed responses from the MCP servers or Ollama.
+- Implement exponential backoff for retries to avoid overwhelming the servers.
+- Sanitize the inputs and outputs, even the summaries, to prevent potential injection attacks if the LLM output is used elsewhere.
+- Add input validation to the function `call_ollama` to ensure the model and prompt aren't empty strings.
+- Implement a mechanism to dynamically adjust the `summary` length in the StepLog based on the overall size of the history to avoid context window issues.
+Correctness: 90%
+-----
+URL: https://github.com/yulk6992/DI-BOOTCAMP/blob/main/Week9/Day3/mini_projet_part1/requirements.txt
+suggestions for improvement:
+- Skipping file (too many comments or blank lines).
+Correctness: N/A%
+-----
+URL: https://github.com/yulk6992/DI-BOOTCAMP/blob/main/Week9/Day3/mini_projet_part1/server.py
+suggestions for improvement:
+- The code only implements *your* MCP server, but the task requires the integration of *two third-party* MCP servers.
+- The code lacks the LLM planning and orchestration logic.
+- There's no implementation of error handling, observability, or env-based config as requested.
+- There's no integration with Streamlit.
+Correctness: 20%
+-----
