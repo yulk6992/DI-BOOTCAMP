@@ -1,0 +1,11 @@
+URL: https://github.com/yulk6992/DI-BOOTCAMP/blob/main/Week9/Day2/ExerciceXP/requirements.txt
+suggestions for improvement:
+- Skipping file (too many comments or blank lines).
+Correctness: N/A%
+-----
+URL: https://github.com/yulk6992/DI-BOOTCAMP/blob/main/Week9/Day2/ExerciceXP/starter.py
+suggestions for improvement:
+- The `PenguinAgent.take_action` method directly returns an action instead of using the LLM. It would be more in line with the chapter's content if the LLM was used to decide on an action.
+- The heuristic in the ScientistAgent to decide on actions is a little bit too straightforward. Consider using the LLM as described in the chapter.
+Correctness: 90%
+-----
