@@ -1,0 +1,34 @@
+URL: https://github.com/yulk6992/DI-BOOTCAMP/blob/main/Week9/Day3/mini_projet_part1/app.py
+suggestions for improvement:
+- The provided code snippet focuses on the client-side interaction (Streamlit app and orchestration) but does not include the crucial part of building the custom MCP server with its own tools, which is the core requirement of the mini-project.
+- The orchestrate function and MCPConnection class are assumed to exist but not provided, making it difficult to fully assess the code's correctness without these components.
+- The code could benefit from error handling and more informative messages to the user during the orchestration process.
+Correctness: 0%
+-----
+URL: https://github.com/yulk6992/DI-BOOTCAMP/blob/main/Week9/Day3/mini_projet_part1/mcp_client.py
+suggestions for improvement:
+- This code only implements the client side for interacting with an MCP server. It does not include the implementation of the MCP server itself with custom tools as required by the chapter.
+- The subprocess execution could be made more secure by validating the command before execution.
+- Consider adding error handling for network issues or invalid responses from the server.
+Correctness: 0%
+-----
+URL: https://github.com/yulk6992/DI-BOOTCAMP/blob/main/Week9/Day3/mini_projet_part1/orchestrator.py
+suggestions for improvement:
+- The code partially addresses the problem. It provides the orchestration logic, but it lacks the crucial part of implementing and exposing custom tools via an MCP server, which is the core requirement of the task. The code focuses on the client-side orchestration, using Ollama and MCP connections, but misses the server-side implementation of custom tools.
+- Consider adding argument validation to the functions. This would provide more robust code and error reporting, especially when communicating with external services or APIs.
+- Implement the MCP server with at least 1-2 custom tools as required by the project. Provide clear docstrings and schemas for these tools.
+- Improve error handling when calling the LLM and MCP tools. Provide specific error messages and potentially retry mechanisms.
+Correctness: 60%
+-----
+URL: https://github.com/yulk6992/DI-BOOTCAMP/blob/main/Week9/Day3/mini_projet_part1/requirements.txt
+suggestions for improvement:
+- Skipping file (too many comments or blank lines).
+Correctness: N/A%
+-----
+URL: https://github.com/yulk6992/DI-BOOTCAMP/blob/main/Week9/Day3/mini_projet_part1/server.py
+suggestions for improvement:
+- The server currently only exposes one tool. Consider adding a second tool to fully meet the requirements.
+- The summarization logic is very basic. While acceptable, consider making it more sophisticated, potentially incorporating a local LLM if resources allow to improve the summarization quality.
+- The server currently doesn't have input validation beyond checking for the existence of 'context'. Add more robust input validation to prevent errors and potential security issues, especially if interacting with external APIs in future iterations.
+Correctness: 70%
+-----
