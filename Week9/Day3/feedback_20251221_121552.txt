@@ -1,0 +1,126 @@
+URL: https://github.com/yulk6992/DI-BOOTCAMP/blob/main/Week9/Day3/mini_projet/.env
+suggestions for improvement:
+- The provided configuration only sets up the UI and links to other files. This is not runnable code and it only sets up the execution environment but does not show any code implementation for the custom MCP server/tools or the agentic client logic as requested in the prompt. Need to implement and add code implementation for all the requirements to achieve a good score. 
+Correctness: 0%
+-----
+URL: https://github.com/yulk6992/DI-BOOTCAMP/blob/main/Week9/Day3/mini_projet/app.py
+suggestions for improvement:
+- This code only implements the Streamlit UI, which is not the core requirement of the mini-project. The project requires building an MCP server with custom tools, composing it with external servers, and creating an agentic client that uses an LLM for planning and execution. The provided UI code relies on other modules (my_mcp_server.py, mcp_multi_client.py, llm_client.py, orchestrator.py) to implement the core functionalities. Without those files, it's impossible to assess if the project requirements are met.
+- The UI itself seems well-structured and provides a good user experience, but it doesn't directly address the core tasks of building the MCP server and agentic client.
+Correctness: 0%
+-----
+URL: https://github.com/yulk6992/DI-BOOTCAMP/blob/main/Week9/Day3/mini_projet/config.py
+suggestions for improvement:
+- No specific feedback.
+Correctness: 100%
+-----
+URL: https://github.com/yulk6992/DI-BOOTCAMP/blob/main/Week9/Day3/mini_projet/llm_client.py
+suggestions for improvement:
+- The code fulfills the requirement of having an LLM client capable of planning and choosing tools. However, the prompt specifies that this client should be able to discover tools from a user's own server AND external servers. The provided code does not implement the 'discovery' part, meaning how the LLM client learns about the available tools on both the user's MCP server and external servers. This discovery mechanism is critical for the agent to know what tools are available for planning.
+- The code implements the runtime option for either GroqCloud or Ollama, but this is done through the load_llm_config() function. The description specifies that this configuration should be done through simple environment variables.
+- There is a global LLM instance which is generally discouraged. Dependency injection is preferred.
+- The code implements the planning part and allows the LLM to select the next action based on the provided tools.
+Correctness: 70%
+-----
+URL: https://github.com/yulk6992/DI-BOOTCAMP/blob/main/Week9/Day3/mini_projet/mcp_multi_client.py
+suggestions for improvement:
+- The code addresses the multi-server aspect of the problem well, particularly the composition of external servers with a local one. However, the explicit implementation of the 'local_insights' server (your own MCP server with custom tools) is missing, as this code only focuses on the client-side implementation.
+- The code lacks the implementation of the custom tools. The chapter content requires creating 1-2 custom tools with clear input/output schemas. This is not present in the given code. The code correctly handles tool discovery and calling once they exist, but doesn't show the tool creation itself.
+- The code's structure and comments are good, but could be improved by adding more exception handling and input validation, especially when dealing with external servers and LLM interactions.
+- Consider adding some authentication/authorization mechanisms when your server is exposed, even for development purposes.
+Correctness: 70%
+-----
+URL: https://github.com/yulk6992/DI-BOOTCAMP/blob/main/Week9/Day3/mini_projet/mini_projet_part1/app.py
+suggestions for improvement:
+- The code is missing the crucial element of creating a *custom* MCP server with its own tools. It only sets up connections to external servers, failing to address the primary requirement of the mini-project.
+- The `orchestrate` function is not defined in the given code, making it impossible to assess the orchestration logic and whether it successfully incorporates the user's custom server along with external ones.
+- The code lacks explicit configuration for GroqCloud or Ollama, which is a stated requirement. It assumes the `orchestrate` function handles this, but without seeing that function, it's impossible to verify.
+- Error handling could be improved. The `try...finally` block only ensures that the MCP processes are closed. More specific error handling within the orchestration logic would enhance robustness.
+Correctness: 0%
+-----
+URL: https://github.com/yulk6992/DI-BOOTCAMP/blob/main/Week9/Day3/mini_projet/mini_projet_part1/mcp_client.py
+suggestions for improvement:
+- This code implements an MCP client, which is a utility that could be used in Part 2. However, by itself it does not address the core requirements of Part 2, which involves creating your own MCP server exposing custom tools, composing it with external servers, and creating an agentic client that orchestrates calls using an LLM.
+- The code lacks the crucial parts related to tool creation, server implementation, LLM integration, and orchestration logic. Therefore, it's not a complete solution to the prompt.
+Correctness: 0%
+-----
+URL: https://github.com/yulk6992/DI-BOOTCAMP/blob/main/Week9/Day3/mini_projet/mini_projet_part1/orchestrator.py
+suggestions for improvement:
+- The code lacks the crucial part of the assignment: the custom MCP server with at least one or two custom tools. This is the core requirement and is completely missing.
+- The `orchestrate` function is well-structured but needs integration with the custom MCP server to be complete.
+- Consider adding error handling for network requests (e.g., using `try...except` blocks around `requests.post`) to make the code more robust.
+- Sanitize inputs to prevent potential injection attacks if the tools interact with external systems or databases.
+Correctness: 50%
+-----
+URL: https://github.com/yulk6992/DI-BOOTCAMP/blob/main/Week9/Day3/mini_projet/mini_projet_part1/requirements.txt
+suggestions for improvement:
+- Skipping file (too many comments or blank lines).
+Correctness: N/A%
+-----
+URL: https://github.com/yulk6992/DI-BOOTCAMP/blob/main/Week9/Day3/mini_projet/mini_projet_part1/server.py
+suggestions for improvement:
+- Add another custom tool to your MCP server to meet the requirement of having 1-2 custom tools.
+- Implement input validation and error handling within the `summarize_insights` function to ensure robustness. This could include checking the type of the 'context' argument or handling potential exceptions during string manipulation.
+- The current implementation is a basic rule-based summarization. Consider integrating an LLM for more sophisticated summarization, aligning with the prompt's suggestion for improvement.
+- While the code includes schemas, explicitly document the schemas in a more user-friendly format (e.g., markdown) to improve discoverability and ease of use for the agentic client.
+Correctness: 70%
+-----
+URL: https://github.com/yulk6992/DI-BOOTCAMP/blob/main/Week9/Day3/mini_projet/my_mcp_server.py
+suggestions for improvement:
+- Consider adding more comprehensive error handling to the tools, especially around unexpected input types or values, to enhance robustness.
+- While the code includes basic validation, consider adding more sophisticated validation or sanitization to prevent potential issues, especially when dealing with user-provided text.
+Correctness: 100%
+-----
+URL: https://github.com/yulk6992/DI-BOOTCAMP/blob/main/Week9/Day3/mini_projet/orchestrator.py
+suggestions for improvement:
+- Consider adding more detailed docstrings to methods within the AgenticOrchestrator class to improve readability.
+- Explore more sophisticated rate limiting strategies (e.g., token bucket) for production environments.
+Correctness: 100%
+-----
+URL: https://github.com/yulk6992/DI-BOOTCAMP/blob/main/Week9/Day3/mini_projet/requirements.txt
+suggestions for improvement:
+- Skipping file (too many comments or blank lines).
+Correctness: N/A%
+-----
+URL: https://github.com/yulk6992/DI-BOOTCAMP/blob/main/Week9/Day3/mini_projet/test_mcp.py
+suggestions for improvement:
+- While the code demonstrates multi-server composition, it does so in a *manual* fashion. The chapter specifically requires an LLM to *plan* multi-step calls based on intermediate results. This planning aspect is missing.
+- The code uses hardcoded paths. While fine for local testing, consider making these configurable or relative for better portability and reusability.
+- Error handling could be improved. The current check for required tools only prints an error message. More robust error handling, such as raising exceptions, would be beneficial.
+Correctness: 75%
+-----
+URL: https://github.com/yulk6992/DI-BOOTCAMP/blob/main/Week9/Day3/mini_projet_part1/app.py
+suggestions for improvement:
+- The code needs to include the implementation of the MCP server with custom tools.
+- The orchestrate function needs to be implemented to use an LLM (GroqCloud or Ollama) for planning and tool selection.
+- The MCPConnection should be adapted to handle different servers from Part 1 and the newly created server.
+Correctness: 0%
+-----
+URL: https://github.com/yulk6992/DI-BOOTCAMP/blob/main/Week9/Day3/mini_projet_part1/mcp_client.py
+suggestions for improvement:
+- This code provides a client for interacting with an MCP server but does not fulfill the primary requirements of the mini-project: creating a custom MCP server with custom tools and composing it with other servers. The code only handles the client side.
+- The MCPConnection class could benefit from more robust error handling, such as catching exceptions during JSON parsing or subprocess communication.
+- Consider using a more established library for handling JSON-RPC communication, as this provides a basic implementation.
+Correctness: 0%
+-----
+URL: https://github.com/yulk6992/DI-BOOTCAMP/blob/main/Week9/Day3/mini_projet_part1/orchestrator.py
+suggestions for improvement:
+- The code lacks the core requirement of implementing a custom MCP server with its own tools. This is the most significant deviation from the project's requirements.
+- The `orchestrate` function is complex. Consider breaking it down into smaller, more manageable functions to improve readability and maintainability.
+- The exception handling in the `orchestrate` function could be more specific. Catching broad exceptions like `Exception` can mask underlying issues.
+- The summarization of results using `str(result)[:300]` is a simplistic approach. A more robust method of summarizing large payloads would be beneficial.
+- There is no explicit validation of input schemas for the tools being called. Adding this would improve the robustness of the orchestration process.
+Correctness: 50%
+-----
+URL: https://github.com/yulk6992/DI-BOOTCAMP/blob/main/Week9/Day3/mini_projet_part1/requirements.txt
+suggestions for improvement:
+- Skipping file (too many comments or blank lines).
+Correctness: N/A%
+-----
+URL: https://github.com/yulk6992/DI-BOOTCAMP/blob/main/Week9/Day3/mini_projet_part1/server.py
+suggestions for improvement:
+- Consider adding a second, non-trivial tool to your server as per the requirements.
+- Implement more robust error handling and input validation within the `summarize_insights` function.
+- Enhance security by sanitizing inputs to prevent potential injection attacks, especially if the summarization logic involves external services or LLMs.
+Correctness: 70%
+-----
